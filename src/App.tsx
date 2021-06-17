@@ -23,11 +23,14 @@ function App() {
         onChange={(e) => setTxtIdadeAnos(Number(e.target.value))}
       />
 
+
+
       <h3>Idade : {txtIdadeAnos}</h3>
       <h3>Dias vividos: {diasVividos} </h3>
       <H1Button text='Calcula Dias Vividos' onClick={calcularDiasVividos} />
 
     </div>
+
 
 
   );
