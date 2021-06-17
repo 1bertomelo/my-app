@@ -1,39 +1,35 @@
 import React, { useState } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import { H1Label } from './Components/H1Label/H1Label';
 import H1Button from './Components/H1Button/H1Button';
-import H1List from './Components/H1List/H1List';
+
+
 function App() {
-  const SuperHerois: string[] = ['Batman', 'Homem Aranha', 'Super Homem', 'Homem de Ferro'];
-  const Inimigos: string[] = ['Coringa', 'Venon', 'LexLuttor'];
+  //estado
+  //estao array [ variavel , funcao que muda valor do estado] = useState<tipo>(valor)
+  const [txtIdadeAnos, setTxtIdadeAnos] = useState<number>(0);
+  const [diasVividos, setDiasVividos] = useState<number>(0);
 
-  //primeiro sintaxe: const [variavel, funcao que seta estado]
-  //declarando um estado para armazenar o valor do input do nome do heroi
-  const [nomeHeroi, setNomeHeroi] = useState<string>('');
-
+  function calcularDiasVividos() {
+    //alert(`${txtIdadeAnos * 365} dias vividos!`);
+    setDiasVividos(txtIdadeAnos * 365);
+  }
 
   return (
     <div>
-      <h1>Olá Mundo</h1>
-      <input type="text"
-        placeholder="digite nome de um heroi"
-        onChange={e => setNomeHeroi(e.target.value)}
+      <H1Label />
+      <input type='number'
+        placeholder='Digite idade'
+        onChange={(e) => setTxtIdadeAnos(Number(e.target.value))}
       />
-      <h3>{nomeHeroi}</h3>
-      <h3>{nomeHeroi.length}</h3>
-      <h3>{nomeHeroi.length > 3 ? '😎' : ''} </h3>
 
-      <H1Button text="Insira um Super Heroi" />
-
-      <input type="text" placeholder="digite nome de um inimigo" />
-
-      <H1Button text="Insira um Inimigo" />
-
-      <H1List data={SuperHerois} />
-      <H1List data={Inimigos} />
-
+      <h3>Idade : {txtIdadeAnos}</h3>
+      <h3>Dias vividos: {diasVividos} </h3>
+      <H1Button text='Calcula Dias Vividos' onClick={calcularDiasVividos} />
 
     </div>
+
+
   );
 }
 
